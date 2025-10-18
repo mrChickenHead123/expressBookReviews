@@ -20,10 +20,10 @@ public_users.get('/',function (req, res) {
 public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
     let isbnNumber = req.params.isbn;
-    let filteredISBNnumber = books.filter((book) => {
+    let filtered_ISBNnumber = books.filter((book) => {
         return book[isbnNumber] === isbnNumber
     })
-    res.send(filteredISBNnumber)
+    res.send(filtered_ISBNnumber)
  });
   
 // Get book details based on author
@@ -52,6 +52,12 @@ public_users.get('/title/:title',function (req, res) {
 //  Get book review
 public_users.get('/review/:isbn',function (req, res) {
   //Write your code here
+    let isbn = req.params.isbn;
+    let filtered_isbn = books.filter((book) => {
+        return book[reviewIsbn] === reviewIsbn
+    })
+    res.send(filtered_isbn["reviews"]);
+
   return res.status(300).json({message: "Yet to be implemented"});
 });
 
