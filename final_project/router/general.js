@@ -18,7 +18,7 @@ public_users.post("/register", (req,res) => {
       return res.status(404).json({ message: "User already exists!" });
     }
   }
-    return res.status(404).js on({ message: "Unable to register user." });
+  return res.status(404).json({ message: "Unable to register user." });
   
 });
 
@@ -32,16 +32,14 @@ public_users.get('/',function (req, res) {
 public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
     let isbnNumber = req.params.isbn;
-    let filtered_ISBNnumber = books.filter((book) => {
-        return book[isbnNumber] === isbnNumber
-    })
-    res.send(filtered_ISBNnumber)
+    res.send(books[isbnNumber])
  });
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
   //Write your code here
   let author = req.params.author;
+  let keys = Object.keys(books);
    let filtered_Author = books.filter((book) => {
         return book[author] === author
     })
