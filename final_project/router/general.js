@@ -9,6 +9,8 @@ public_users.post("/register", (req,res) => {
   //Write your code here
   const username = req.body.username;
   const password = req.body.password;
+  console.log(username)
+  console.log(password)
 
   if (username && password) {
     if (!isValid(username)){
@@ -18,7 +20,7 @@ public_users.post("/register", (req,res) => {
       return res.status(404).json({ message: "User already exists!" });
     }
   }
-  return res.status(404).json({ message: "Unable to register user." });
+  return res.status(404).json({ message: "Unable to register user. Username or Password not provided" });
   
 });
 
@@ -68,12 +70,8 @@ public_users.get('/title/:title',function (req, res) {
 public_users.get('/review/:isbn',function (req, res) {
   //Write your code here
     let isbn = req.params.isbn;
-    let filtered_isbn = books.filter((book) => {
-        return book[reviewIsbn] === reviewIsbn
-    })
-    res.send(filtered_isbn["reviews"]);
-
-  return res.status(300).json({message: "Yet to be implemented"});
+    res.send(books[isbn].reviews)
+    
 });
 
 module.exports.general = public_users;
