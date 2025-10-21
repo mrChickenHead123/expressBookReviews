@@ -58,13 +58,13 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
     let username = req.session.authorization.username
     let userReview = books[isbn].reviews[username]
 
-    //if (userReview){
-    //    books[isbn].reviews[username] = review
-    //}
+    if (isbn){
+        books[isbn].reviews[username] = review
+    }
     console.log(review)
     console.log(username)
     console.log(userReview)
-    res.send(review)
+    res.send(books[isbn].reviews)
 
 
 });
