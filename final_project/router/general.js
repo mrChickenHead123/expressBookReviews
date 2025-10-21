@@ -31,17 +31,17 @@ public_users.get('/',function (req, res) {
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
   //Write your code here
-    let isbnNumber = req.params.isbn;
-    res.send(books[isbnNumber])
+    let isbn = req.params.isbn;
+    res.send(books[isbn])
  });
   
 // Get book details based on author
 public_users.get('/author/:author',function (req, res) {
-  //Write your code here
-  let author = req.params.author;
-  let keys = Object.keys(books);
-   let filtered_Author = books.filter((book) => {
-        return book[author] === author
+    //Write your code here
+    let author = req.params.author;
+    let bookArray = Object.values(books);
+    let filtered_Author = bookArray.filter((book) => {
+        return book.author === author;
     })
     res.send(filtered_Author);
    
@@ -51,9 +51,14 @@ public_users.get('/author/:author',function (req, res) {
 public_users.get('/title/:title',function (req, res) {
   //Write your code here
 
-  let title = req.params.title;
-   let filtered_Title = books.filter((book) => {
-        return book[title] === title
+    let title = req.params.title;
+    //console.log("test")
+    //console.log(title)
+    let bookArray = Object.values(books);
+    let filtered_Title = bookArray.filter((book) => {
+        console.log(book.title)
+        //console.log(title)
+        return book.title === title;
     })
     res.send(filtered_Title);
 
