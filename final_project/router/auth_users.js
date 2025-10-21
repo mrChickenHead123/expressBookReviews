@@ -37,7 +37,6 @@ regd_users.post("/login", (req,res) => {
 
   if (authenticatedUser(username, password)) {
     let accessToken = jwt.sign({
-      userPassword: password,
       userUsername: username
     }, 'lettuce', { expiresIn: 60 * 60 });
 
@@ -54,11 +53,19 @@ regd_users.post("/login", (req,res) => {
 regd_users.put("/auth/review/:isbn", (req, res) => {
   //Write your code here
 
-    //let isbn = req.params.isbn;
-    //let review = req.query.review
-    //let username = req.session.authorization.username
+    let isbn = req.params.isbn;
+    let review = req.query.review
+    let username = req.session.authorization.username
+    let userReview = books[isbn].reviews[username]
 
-    //if (books[isbn].reviews.)
+    //if (userReview){
+    //    books[isbn].reviews[username] = review
+    //}
+    console.log(review)
+    console.log(username)
+    console.log(userReview)
+    res.send(review)
+
 
 });
 
