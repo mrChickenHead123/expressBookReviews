@@ -56,7 +56,7 @@ public_users.get('/title/:title',function (req, res) {
     //console.log(title)
     let bookArray = Object.values(books);
     let filtered_Title = bookArray.filter((book) => {
-        console.log(book.title)
+        //console.log(book.title)
         //console.log(title)
         return book.title === title;
     })
